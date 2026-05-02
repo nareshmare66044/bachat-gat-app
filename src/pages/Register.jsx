@@ -1,11 +1,17 @@
 import { useState } from "react";
 import { supabase } from "../supabase";
+import AnimatedPage from "../components/AnimatedPage";
 
 export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleRegister = async () => {
+    if (!email || !password) {
+      alert("Please enter email and password");
+      return;
+    }
+
     const { error } = await supabase.auth.signUp({
       email,
       password,
@@ -16,35 +22,61 @@ export default function Register() {
       alert(error.message);
     } else {
       alert("Registered successfully ✅");
+      setEmail("");
+      setPassword("");
     }
   };
 
   return (
-    <div style={container}>
-      <h2>Register</h2>
+    <AnimatedPage>
+      <div style={container}>
+        <h2>Register</h2>
 
-      <input
-        placeholder="Email"
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <br /><br />
+        <input
+          style={input}
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
 
-      <input
-        type="password"
-        placeholder="Password"
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <br /><br />
+        <input
+          style={input}
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
 
-      <button onClick={handleRegister}>
-        Register
-      </button>
-    </div>
+        <button style={button} onClick={handleRegister}>
+          Register
+        </button>
+      </div>
+    </AnimatedPage>
   );
 }
+
+/* Styles */
 
 const container = {
   maxWidth: "420px",
   margin: "auto",
   padding: "15px",
+};
+
+const input = {
+  width: "100%",
+  padding: "12px",
+  borderRadius: "8px",
+  border: "1px solid #ccc",
+  marginTop: "10px",
+};
+
+const button = {
+  width: "100%",
+  padding: "12px",
+  background: "#2563eb",
+  color: "#fff",
+  border: "none",
+  borderRadius: "8px",
+  marginTop: "15px",
 };

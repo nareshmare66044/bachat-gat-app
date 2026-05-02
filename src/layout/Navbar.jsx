@@ -14,18 +14,24 @@ export default function Navbar() {
       <h2>Bachat Gat</h2>
 
       <div>
-        <Link to="/" style={{ color: "white", marginRight: "10px" }}>
-          Dashboard
-        </Link>
-
-        <Link to="/groups" style={{ color: "white", marginRight: "10px" }}>
+        <Link to="/" style={linkStyle}>
           Groups
         </Link>
 
-        <Link to="/approvals" style={{ color: "white" }}>
+        <Link to="/approvals" style={linkStyle}>
           Approvals
+        </Link>
+
+        <Link to="/create-group" style={linkStyle}>
+          Create
         </Link>
       </div>
     </div>
   );
 }
+
+const linkStyle = {
+  color: "white",
+  marginRight: "10px",
+  textDecoration: "none",
+};
