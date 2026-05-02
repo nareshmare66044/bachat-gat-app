@@ -24,6 +24,8 @@ export default function GroupDetails() {
     setGroup(data);
   };
 
+  
+
   const fetchMembers = async () => {
     const { data } = await supabase
       .from("members")
@@ -48,7 +50,7 @@ export default function GroupDetails() {
   };
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div style={container}>
       {group && (
         <>
           <h2>{group.name}</h2>
@@ -94,4 +96,10 @@ const card = {
   background: "#fff",
   marginTop: "10px",
   borderRadius: "8px",
+};
+
+const container = {
+  maxWidth: "420px",
+  margin: "auto",
+  padding: "15px",
 };

@@ -20,7 +20,7 @@ export default function Register() {
   };
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div style={container}>
       <h2>Register</h2>
 
       <input
@@ -42,3 +42,9 @@ export default function Register() {
     </div>
   );
 }
+
+const container = {
+  maxWidth: "420px",
+  margin: "auto",
+  padding: "15px",
+};

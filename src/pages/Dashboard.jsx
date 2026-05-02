@@ -66,7 +66,7 @@ export default function Dashboard() {
   };
 
   return (
-  <div style={{ padding: "20px" }}>
+  <div style={container}>
     <h2 style={{ marginBottom: "20px" }}>Dashboard</h2>
 
     <div style={grid}>
@@ -100,7 +100,9 @@ export default function Dashboard() {
 
     </div>
   </div>
+  
 );
+
   
 }
 const grid = {
@@ -121,4 +123,10 @@ const amount = {
   fontSize: "22px",
   fontWeight: "bold",
   marginTop: "10px",
+};
+
+const container = {
+  maxWidth: "420px",
+  margin: "auto",
+  padding: "15px",
 };

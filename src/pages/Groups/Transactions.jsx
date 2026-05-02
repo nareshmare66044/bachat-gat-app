@@ -41,7 +41,11 @@ export default function Transactions() {
   const addTransaction = async () => {
     if (!form.member_id || !form.amount) return;
 
-    const user = await supabase.auth.getUser();
+    const { data: group } = await supabase
+  .from("groups")
+  .select("*")
+  .eq("id", groupId)
+  .single();
 
 await supabase.from("transactions").insert([
   {
@@ -52,8 +56,8 @@ await supabase.from("transactions").insert([
     status: "pending",
     level1_approved: false,
     level2_approved: false,
-    approver1: user.data.user.id, // creator as level1
-    approver2: "REPLACE_WITH_SECOND_USER_ID", // temporary
+    approver1: group.approver1,
+    approver2: group.approver2,
   },
 ]);
 
@@ -66,7 +70,7 @@ await supabase.from("transactions").insert([
 
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div style={container}>
       <h2>Transactions</h2>
 
       {/* Form */}
@@ -135,4 +139,10 @@ const card = {
   borderRadius: "10px",
   marginTop: "10px",
   boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+};
+
+const container = {
+  maxWidth: "420px",
+  margin: "auto",
+  padding: "15px",
 };

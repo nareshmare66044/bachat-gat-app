@@ -82,7 +82,7 @@ useEffect(() => {
 }, []);
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div style={container}>
       <h2>Pending Approvals</h2>
 
       {transactions.length === 0 ? (
@@ -120,4 +120,10 @@ useEffect(() => {
     </div>
   );
 }
+
+const container = {
+  maxWidth: "420px",
+  margin: "auto",
+  padding: "15px",
+};
 

@@ -17,7 +17,7 @@ export default function CreateGroup() {
   ]);
 };
   return (
-    <div style={{ padding: "20px" }}>
+    <div style={container}>
       <h2>Create Group</h2>
 
       <input
@@ -31,3 +31,9 @@ export default function CreateGroup() {
     </div>
   );
 }
+
+const container = {
+  maxWidth: "420px",
+  margin: "auto",
+  padding: "15px",
+};
