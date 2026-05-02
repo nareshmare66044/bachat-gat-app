@@ -5,8 +5,8 @@ import Approvals from "./pages/Approvals";
 import Navbar from "./layout/Navbar";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import GroupDetails from "./pages/groups/GroupDetails";
-import Transactions from "./pages/groups/Transactions";
+import GroupDetails from "./pages/Groups/GroupDetails";
+import Transactions from "./pages/Groups/Transactions";
 
 function App() {
   return (
